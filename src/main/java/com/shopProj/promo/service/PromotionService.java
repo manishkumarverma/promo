@@ -1,5 +1,7 @@
 package com.shopProj.promo.service;
 
-public interface PromotionService {
+import com.shopProj.promo.model.CartItem;
 
+public interface PromotionService {
+	public void applyPromotion(CartItem cart);
 }
