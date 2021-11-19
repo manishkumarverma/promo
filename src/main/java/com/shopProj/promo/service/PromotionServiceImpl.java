@@ -15,12 +15,10 @@ import com.shopProj.promo.model.Promotion;
 
 @Service
 public class PromotionServiceImpl implements PromotionService {
-	@Autowired
-	CartItemDao cartItemDao;
-
+	
 	@Override
 	public void applyPromotion(Cart cart) {
-		// TODO Auto-generated method stub
+	
 		List<CartItem> cartItems = cart.getCartItems();
 		
 		cartItems.forEach(cartItem -> {
