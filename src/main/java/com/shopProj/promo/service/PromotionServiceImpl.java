@@ -35,7 +35,7 @@ public class PromotionServiceImpl implements PromotionService {
 					int promoQuantity = promotion.getQuantity();
 					double promoPrice = promotion.getEffectivePrice();
 
-					if (promoQuantity > quantity || (promoPrice/promoQuantity) > basePrice) {
+					if (promoQuantity > quantity ) {
 						continue;
 					} else {
 						if (promotion.getProductComboId() != null) {
@@ -66,7 +66,9 @@ public class PromotionServiceImpl implements PromotionService {
 
 				if(!cartItem.isPromotionApplied())
 				{
+					
 					cartItem.setTotalPrice(cartItem.getQuantity()*cartItem.getProduct().getBasePrice());
+					System.out.println(cartItem.getProduct().getSkuId()+" "+quantity+" "+cartItem.getTotalPrice());
 				}
 			}
 		});

@@ -18,8 +18,8 @@ public class PromotionServiceTest {
 	 PromotionService promotionService=new PromotionServiceImpl();;
 	
 
-	//@Test
-	public void applyPromotionTest() {
+	@Test
+	public void applyPromotionTestA() {
 		
 		Cart cart=new Cart();
 		
@@ -89,8 +89,8 @@ promoC.setProductComboId("D");
 		promotionService.applyPromotion(cart);
 	}
 	
-	//@Test
-	public void applyPromotionTest2() {
+	@Test
+	public void applyPromotionTestB() {
 		
 		Cart cart=new Cart();
 		
@@ -161,7 +161,7 @@ promoC.setProductComboId("D");
 	}
 
 	@Test
-public void applyPromotionTest3() {
+public void applyPromotionTestC() {
 		
 		Cart cart=new Cart();
 		
