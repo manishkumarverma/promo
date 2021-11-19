@@ -1,8 +1,7 @@
 package com.shopProj.promo.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,20 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Promotion")
 public class Promotion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long promoId;
-	@ManyToOne
+	private Long promoId;
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "skuId", nullable = false)
 	private Product product;
 	private Integer quantity;
-	private BigDecimal effectivePrice;
+	private Double effectivePrice;
 	private String promotionType;
 	private String productComboId;
-	private Integer productComboquantity;
 
 	/**
 	 * @return the quantity
@@ -42,14 +43,14 @@ public class Promotion {
 	/**
 	 * @return the effectivePrice
 	 */
-	public BigDecimal getEffectivePrice() {
+	public Double getEffectivePrice() {
 		return effectivePrice;
 	}
 
 	/**
 	 * @param effectivePrice the effectivePrice to set
 	 */
-	public void setEffectivePrice(BigDecimal effectivePrice) {
+	public void setEffectivePrice(Double effectivePrice) {
 		this.effectivePrice = effectivePrice;
 	}
 
@@ -75,25 +76,11 @@ public class Promotion {
 		this.productComboId = productComboId;
 	}
 
-	/**
-	 * @return the productComboquantity
-	 */
-	public Integer getProductComboquantity() {
-		return productComboquantity;
-	}
-
-	/**
-	 * @param productComboquantity the productComboquantity to set
-	 */
-	public void setProductComboquantity(Integer productComboquantity) {
-		this.productComboquantity = productComboquantity;
-	}
-
-	public long getPromoId() {
+	public Long getPromoId() {
 		return promoId;
 	}
 
-	public void setPromoId(long promoId) {
+	public void setPromoId(Long promoId) {
 		this.promoId = promoId;
 	}
 

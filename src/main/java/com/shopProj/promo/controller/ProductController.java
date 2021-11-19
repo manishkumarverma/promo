@@ -11,7 +11,7 @@ import com.shopProj.promo.model.Product;
 
 @RestController
 public class ProductController {
-	
+
 	@Autowired
 	private ProductDao productDao;
 
@@ -21,7 +21,7 @@ public class ProductController {
 //		pr.setSkuId("A");
 //		pr.setBasePrice(50);
 //		productDao.saveAndFlush(pr);
-		
+
 		return productDao.findAll();
 	}
 

@@ -2,6 +2,7 @@ package com.shopProj.promo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,13 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Cart")
 public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cartId;
-	@OneToMany(mappedBy = "cart")
+	private Long cartId;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
 	List<CartItem> cartItems;
 
 	/**
@@ -32,11 +36,11 @@ public class Cart {
 		this.cartItems = cartItems;
 	}
 
-	public long getCartId() {
+	public Long getCartId() {
 		return cartId;
 	}
 
-	public void setCartId(long cartId) {
+	public void setCartId(Long cartId) {
 		this.cartId = cartId;
 	}
 

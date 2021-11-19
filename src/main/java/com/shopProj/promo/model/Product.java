@@ -1,20 +1,23 @@
 package com.shopProj.promo.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Product")
 public class Product {
 	@Id
 	private String skuId;
-	private double basePrice;
-	@OneToMany(mappedBy = "product")
+	private Double basePrice;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
 	private List<Promotion> promotions;
 
 	/**
@@ -34,14 +37,14 @@ public class Product {
 	/**
 	 * @return the basePrice
 	 */
-	public double getBasePrice() {
+	public Double getBasePrice() {
 		return basePrice;
 	}
 
 	/**
 	 * @param basePrice the basePrice to set
 	 */
-	public void setBasePrice(double basePrice) {
+	public void setBasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 
